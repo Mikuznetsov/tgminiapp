@@ -54,7 +54,8 @@ fetch(apiUrl, {
   method: 'GET',
   headers: {
     'Authorization': `Bearer ${apiToken}`,
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': 'Basic Y2tfZWM3Y2E2NWE5ZTk2YzVjMjU3Yzc3YWMxMGNkNzI4ZjNkZDI4ODNiZDpjc182MWNkYmM0NjQ1OGIyY2ZlYzRmYjlkY2E2ZmE4MzZlZDk5MDZlYTcx'
   }
 })
 .then(response => response.json())

@@ -53,7 +53,6 @@ const apiToken = 'cs_61cdbc46458b2cfec4fb9dca6fa836ed9906ea71';  // Замени
 fetch(apiUrl, {
   method: 'GET',
   headers: {
-    'Authorization': `Bearer ${apiToken}`,
     'Content-Type': 'application/json',
     'Authorization': 'Basic Y2tfZWM3Y2E2NWE5ZTk2YzVjMjU3Yzc3YWMxMGNkNzI4ZjNkZDI4ODNiZDpjc182MWNkYmM0NjQ1OGIyY2ZlYzRmYjlkY2E2ZmE4MzZlZDk5MDZlYTcx'
   }

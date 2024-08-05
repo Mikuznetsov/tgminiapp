@@ -22,9 +22,9 @@ function getProductInfo(product_id) {
     const apiUrl = `https://marketing2.site/wp-json/wc/v3/products/${productId}`; // Замените на фактический URL 
 
     // Ваш ключ и секрет для HTTP Basic-аутентификации
-    const key = 'your_consumer_key';
-    const secret = 'your_consumer_secret';
-    const token = btoa(`${key}:${secret}`);
+    const key = 'Basic Y2tfZWM3Y2E2NWE5ZTk2YzVjMjU3Yzc3YWMxMGNkNzI4ZjNkZDI4ODNiZDpjc182MWNkYmM0NjQ1OGIyY2ZlYzRmYjlkY2E2ZmE4MzZlZDk5MDZlYTcx';
+    // const secret = 'your_consumer_secret';
+    // const token = btoa(`${key}:${secret}`);
 
     // Возвращаем промис из функции
     return new Promise((resolve, reject) => {
@@ -32,8 +32,7 @@ function getProductInfo(product_id) {
         fetch(apiUrl, {
             method: 'GET',
             headers: {
-                'Authorization': 'Basic Y2tfZWM3Y2E2NWE5ZTk2YzVjMjU3Yzc3YWMxMGNkNzI4ZjNkZDI4ODNiZDpjc182MWNkYmM0NjQ1OGIyY2ZlYzRmYjlkY2E2ZmE4MzZlZDk5MDZlYTcx',
-                //'Authorization': `Basic ${token}`,
+                'Authorization': key,
                 'Content-Type': 'application/json'
             }
         })
@@ -57,20 +56,20 @@ function showPopup() {
     // Выполняем запрос информации о продукте и обрабатываем результат
     getProductInfo(3755)
         .then(product => {
-            console.log(product); // Здесь вы можете использовать результат запроса
-
+            
             // Получаем информацию о товаре
             const productInfo = product;
+            console.log(productInfo); // Здесь вы можете использовать результат запроса
 
             // Создаем сообщение для попапа, используя результат функции getProductInfo
-            const popupMessage = `Новый продукт: ${productInfo.name}. Описание: ${productInfo.description}. Цена: ${productInfo.price}`;
+            const popupMessage = `Название: ${productInfo.name}. Описание: ${productInfo.description}. Цена: ${productInfo.price}`;
 
             // Отображаем попап с информацией о продукте
             Telegram.WebApp.showPopup({
-                title: 'Заголовок',
+                title: 'Каталог',
                 message: popupMessage,
                 buttons: [
-                    { id: 'link', type: 'default', text: 'Перейти marketing2.site' },
+                    { id: 'link', type: 'default', text: 'Перейти на marketing2.site' },
                     { type: 'cancel' }
                 ]
             }, function (btn) {

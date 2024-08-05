@@ -70,9 +70,9 @@ fetch(apiUrl, {
     </div>
   `;
   
-return productCard;
+//return productCard;
   // Добавляем карточку продукта на страницу
-  //document.getElementById('product-container').innerHTML = productCard;
+  document.getElementById('product-container').innerHTML = productCard;
 })
 .catch(error => {
   // Обрабатываем ошибки

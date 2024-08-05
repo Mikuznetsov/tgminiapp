@@ -65,21 +65,19 @@ function showPopup() {
             const popupMessage = `Название: ${productInfo.name}. Описание: ${productInfo.description}. Цена: ${productInfo.price}`;
 
                 // Создаем HTML карточку продукта
-    const productCard = `
-    <div class="product-card">
-    <img src="${productInfo.images[0].src}" alt="${productInfo.name}">
-      <h2>${productInfo.name}</h2>
-      <p>${productInfo.description}</p>
-      <p>Price: ${productInfo.price}</p>
-    </div>
-  `;
-  // Добавляем карточку продукта на страницу
-  //document.getElementById('product-container').innerHTML = productCard;
+//     const productCard = `
+//     <div class="product-card">
+//     <img src="${productInfo.images[0].src}" alt="${productInfo.name}">
+//       <h2>${productInfo.name}</h2>
+//       <p>${productInfo.description}</p>
+//       <p>Price: ${productInfo.price}</p>
+//     </div>
+//   `;
 
             // Отображаем попап с информацией о продукте
             Telegram.WebApp.showPopup({
                 title: 'Каталог',
-                message: productCard,
+                message: popupMessage,
                 buttons: [
                     { id: 'link', type: 'default', text: 'Перейти на marketing2.site' },
                     { type: 'cancel' }

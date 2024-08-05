@@ -15,37 +15,6 @@ Telegram.WebApp.MainButton.onClick(function () {
 });
 Telegram.WebApp.MainButton.show();
 
-// Function to call showPopup API
-function showPopup() {
-
-    // Пример использования функции
-  getProductInfo(3755)
-  .then(product => {
-    console.log(product); // Здесь вы можете использовать результат запроса
-    // Получаем информацию о товаре
-    const productInfo = product; // Предположим, что у вас есть функция getProductInfo, которая 
-    console.log(productInfo);
-  })
-  .catch(error => {
-    console.error('Ошибка при получении информации о товаре:', error);
-  });
-    // Создаем сообщение для попапа, используя результат функции getProductInfo
-    //const popupMessage = `Новый продукт: ${productInfo.name}. Описание: ${productInfo.description}. Цена: ${productInfo.price}`;
-
-    Telegram.WebApp.showPopup({
-        title: 'Заголовок',
-        message: 'Карточка товара',
-        buttons: [
-            { id: 'link', type: 'default', text: 'Перейти marketing2.site' },
-            { type: 'cancel' },
-        ]
-    }, function (btn) {
-        if (btn === 'link') {
-            Telegram.WebApp.openLink('https://marketing2.site/catalog');
-        }
-    });
-};
-
 function getProductInfo(product_id) {
     let productId = product_id; // Замените на фактический ID товара
   
@@ -82,6 +51,39 @@ function getProductInfo(product_id) {
       });
     });
   }
+  
+// Function to call showPopup API
+function showPopup() {
+
+    // Пример использования функции
+  getProductInfo(3755)
+  .then(product => {
+    console.log(product); // Здесь вы можете использовать результат запроса
+    // Получаем информацию о товаре
+    const productInfo = product; // Предположим, что у вас есть функция getProductInfo, которая 
+    console.log(productInfo);
+  })
+  .catch(error => {
+    console.error('Ошибка при получении информации о товаре:', error);
+  });
+    // Создаем сообщение для попапа, используя результат функции getProductInfo
+    //const popupMessage = `Новый продукт: ${productInfo.name}. Описание: ${productInfo.description}. Цена: ${productInfo.price}`;
+
+    Telegram.WebApp.showPopup({
+        title: 'Заголовок',
+        message: 'Карточка товара',
+        buttons: [
+            { id: 'link', type: 'default', text: 'Перейти marketing2.site' },
+            { type: 'cancel' },
+        ]
+    }, function (btn) {
+        if (btn === 'link') {
+            Telegram.WebApp.openLink('https://marketing2.site/catalog');
+        }
+    });
+};
+
+
 
 
 

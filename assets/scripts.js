@@ -21,11 +21,11 @@ function showPopup() {
     const productInfo = getProductInfo(3755); // Предположим, что у вас есть функция getProductInfo, которая возвращает информацию о товаре
     console.log(productInfo);
     // Создаем сообщение для попапа, используя результат функции getProductInfo
-    const popupMessage = `Новый продукт: ${productInfo.name}. Описание: ${productInfo.description}. Цена: ${productInfo.price}`;
+    //const popupMessage = `Новый продукт: ${productInfo.name}. Описание: ${productInfo.description}. Цена: ${productInfo.price}`;
 
     Telegram.WebApp.showPopup({
         title: 'Заголовок',
-        message: 'Сообщение',
+        message: productInfo,
         buttons: [
             { id: 'link', type: 'default', text: 'Open marketing2.site' },
             { type: 'cancel' },
@@ -45,7 +45,7 @@ console.log(productId);
 
 // URL для получения информации о товаре по его ID
 const apiUrl = `https://marketing2.site/wp-json/wc/v3/products/${productId}`; // Замените на фактический URL вашего сайта WooCommerce
-
+console.log(apiUrl)
 // Ваш ключ аутентификации для доступа к API
 const apiToken = 'cs_61cdbc46458b2cfec4fb9dca6fa836ed9906ea71';  // Замените на ваш фактический ключ
 

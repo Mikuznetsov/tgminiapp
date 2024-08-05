@@ -17,25 +17,73 @@ Telegram.WebApp.MainButton.show();
 
 // Function to call showPopup API
 function showPopup() {
+
+    // Пример использования функции
+  getProductInfo(3755)
+  .then(product => {
+    console.log(product); // Здесь вы можете использовать результат запроса
     // Получаем информацию о товаре
-    const productInfo = getProductInfo(3755); // Предположим, что у вас есть функция getProductInfo, которая возвращает информацию о товаре
+    const productInfo = product; // Предположим, что у вас есть функция getProductInfo, которая 
     console.log(productInfo);
+  })
+  .catch(error => {
+    console.error('Ошибка при получении информации о товаре:', error);
+  });
     // Создаем сообщение для попапа, используя результат функции getProductInfo
     //const popupMessage = `Новый продукт: ${productInfo.name}. Описание: ${productInfo.description}. Цена: ${productInfo.price}`;
 
     Telegram.WebApp.showPopup({
         title: 'Заголовок',
-        message: productInfo,
+        message: 'Карточка товара',
         buttons: [
-            { id: 'link', type: 'default', text: 'Open marketing2.site' },
+            { id: 'link', type: 'default', text: 'Перейти marketing2.site' },
             { type: 'cancel' },
         ]
     }, function (btn) {
         if (btn === 'link') {
-            Telegram.WebApp.openLink('https://marketing2.site/');
+            Telegram.WebApp.openLink('https://marketing2.site/catalog');
         }
     });
 };
+
+function getProductInfo(product_id) {
+    let productId = product_id; // Замените на фактический ID товара
+  
+    // URL для получения информации о товаре по его ID
+    const apiUrl = `https://marketing2.site/wp-json/wc/v3/products/${productId}`; // Замените на фактический URL 
+  
+    // Ваш ключ и секрет для HTTP Basic-аутентификации
+    const key = 'your_consumer_key';
+    const secret = 'your_consumer_secret';
+    const token = btoa(`${key}:${secret}`);
+  
+    // Возвращаем промис из функции
+    return new Promise((resolve, reject) => {
+      // Делаем GET-запрос к API WooCommerce
+      fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Basic Y2tfZWM3Y2E2NWE5ZTk2YzVjMjU3Yzc3YWMxMGNkNzI4ZjNkZDI4ODNiZDpjc182MWNkYmM0NjQ1OGIyY2ZlYzRmYjlkY2E2ZmE4MzZlZDk5MDZlYTcx',
+          //'Authorization': `Basic ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(product => {
+        resolve(product);
+      })
+      .catch(error => {
+        reject(error);
+      });
+    });
+  }
+
+
 
 function getProductInfo(product_id) {
     // ID товара, информацию о котором нужно получить
@@ -47,7 +95,7 @@ console.log(productId);
 const apiUrl = `https://marketing2.site/wp-json/wc/v3/products/${productId}`; // Замените на фактический URL вашего сайта WooCommerce
 console.log(apiUrl)
 // Ваш ключ аутентификации для доступа к API
-const apiToken = 'cs_61cdbc46458b2cfec4fb9dca6fa836ed9906ea71';  // Замените на ваш фактический ключ
+
 
 // Делаем GET-запрос к API WooCommerce
 fetch(apiUrl, {

@@ -22,7 +22,7 @@ function getProductInfo(product_id) {
     const apiUrl = `https://marketing2.site/wp-json/wc/v3/products/${productId}`; // Замените на фактический URL 
 
     // Ваш ключ и секрет для HTTP Basic-аутентификации
-    const key = 'Basic Y2tfZWM3Y2E2NWE5ZTk2YzVjMjU3Yzc3YWMxMGNkNzI4ZjNkZDI4ODNiZDpjc182MWNkYmM0NjQ1OGIyY2ZlYzRmYjlkY2E2ZmE4MzZlZDk5MDZlYTcx';
+    const key = 'Basic Y2tfYzg4YzEyMGI3MmEzNGI1ZDVmZjNlZjhjOWYwMTIxMDAzYjk1OGE0NDpjc19jZDA5NTA4OTEzOGNlMDJmOWViYmIzMDkxYTJiN2U2MDc4MDcwZTQ1';
     // const secret = 'your_consumer_secret';
     // const token = btoa(`${key}:${secret}`);
 
